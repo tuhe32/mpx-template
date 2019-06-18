@@ -1,0 +1,144 @@
+<template >
+  <cover-view class="tab-bar">
+			<cover-view class="tab-bar-item big" bindtap="switchTab">
+				<cover-view class="bar-big">
+					<cover-view class="bar-icon iconfont iconxinshou"></cover-view>
+				</cover-view>
+			</cover-view>
+			<cover-view class="bar-box">
+
+			<cover-view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
+				<!-- <cover-image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
+				<cover-view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view> -->
+        <cover-view class="bar-icon iconfont {{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-view>
+				<cover-view class="bar-text">{{item.text}}</cover-view>
+			</cover-view>
+			<!-- <cover-view class="tab-bar-item active" bindtap="switchTab">
+				<cover-view class="bar-icon iconfont iconshouye"></cover-view>
+				<cover-view class="bar-text">首页</cover-view>
+			</cover-view> -->
+			<!-- <cover-view class="tab-bar-item">
+			</cover-view> -->
+			<!-- <cover-view class="tab-bar-item" bindtap="switchTab">
+				<cover-view class="bar-icon iconfont iconwode"></cover-view>
+				<cover-view class="bar-text">我的</cover-view>
+			</cover-view> -->
+		</cover-view>
+  </cover-view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import { wxSwitchTab } from "../utils/WxApiUtils";
+  createComponent({
+    data: {
+      selected: 0,
+      color: "#7A7E83",
+      selectedColor: "#3cc51f",
+      list: [{
+        pagePath: "../pages/index",
+        iconPath: "iconshouye",
+        selectedIconPath: "iconindex-copy",
+        text: "首页"
+      }, {
+        pagePath: "../pages/login",
+        iconPath: "iconwode",
+        selectedIconPath: "iconicon-test",
+        text: "我的"
+      }]
+    },
+    pageShow() {
+      // 所在页面显示之后就会执行一次
+      console.log('page show')
+
+    },
+    pageHide() {
+      // 页面切入后台执行
+     console.log('page hide')
+
+    },
+    methods: {
+      switchTab(e) {
+        const data = e.currentTarget.dataset
+        const url = data.path
+        wxSwitchTab(url)
+        this.selected = data.index
+      }
+    }
+  })
+</script>
+<style lang="scss" src="../assets/styles/iconfont.scss"></style>
+<style >
+  .tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+		height: 120rpx;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+	 .tab-bar .bar-box {
+		width: 100%;
+	  height:100rpx;
+	  background: white;
+	  display: flex;
+		position:absolute;
+		bottom: 0;
+		border-top:1rpx #eeeeee solid;
+	}
+
+  .tab-bar-border {
+    background-color: rgba(0, 0, 0, 0.13);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleY(0.5);
+  }
+
+  .tab-bar-item {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+	
+  .tab-bar-item cover-image {
+    width: 27px;
+    height: 27px;
+  }
+  .tab-bar-item cover-view {
+    font-size:28rpx;
+		color: #666;
+  }
+	.tab-bar-item .bar-icon{
+		font-size: 40rpx;
+	}
+	.tab-bar-item.big{
+		position: absolute;
+		bottom: 0;
+		left:40%;
+		z-index: 100
+	}
+	.tab-bar-item.big .bar-big{
+		width: 120rpx;
+		height:120rpx;
+		background: #f60;
+		border-radius: 100%;
+		
+	}
+	.tab-bar-item.big .bar-icon{
+		font-size:70rpx;
+		color:#fff;
+		margin-top:20rpx;
+	}
+</style>
+<script  type='application/json' lang='json'>
+{ 
+ "component": true
+}
+</script>
+

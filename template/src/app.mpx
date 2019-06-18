@@ -1,0 +1,76 @@
+<script>
+  // app.js
+  // App({})
+  import { createApp } from "@mpxjs/core"
+  createApp({
+    computed: {
+    },
+    methods: {
+      asd(){console.log();
+      }
+    },
+    onShow(options) {
+      console.log(options)
+    }
+  })
+</script>
+
+<style >
+
+</style>
+<style lang="scss" src="./assets/styles/base.scss"></style>
+<style lang="scss" src="./assets/styles/iconfont.scss"></style>
+<style src="./assets/styles/animate.css"></style> 
+<script type="application/json">
+  {
+    "pages": [
+      "./pages/index",
+      "./pages/login",
+      "./pages/user"
+    ],
+    "packages": [
+      "./packages/index?root=child"
+    ],
+    "window": {
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTitleText": "WeChat",
+      "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+      "color": "#666666",
+      "selectedColor": "#f60",
+      "borderStyle": "white",
+      "backgroundColor": "#f9f9f9",
+      "list": [
+        {
+          "iconPath": "assets/images/home.png",
+          "selectedIconPath": "assets/images/home-active.png",
+          "pagePath": "pages/index",
+          "text": "首页"
+        },
+        {
+          "iconPath": "assets/images/cart.png",
+          "selectedIconPath": "assets/images/cart-active.png",
+          "pagePath": "pages/login",
+          "text": "报表"
+        },
+        {
+          "iconPath": "assets/images/user.png",
+          "selectedIconPath": "assets/images/user-active.png",
+          "pagePath": "pages/user",
+          "text": "我的"
+        }
+      ]
+    },
+    "networkTimeout": {
+      "request": 10000,
+      "downloadFile": 10000
+    },
+    "permission": {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序位置接口的效果展示"
+      }
+    }
+  }
+</script>

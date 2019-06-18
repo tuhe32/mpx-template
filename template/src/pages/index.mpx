@@ -1,0 +1,347 @@
+<template minapp='native' xlang='wxml'>
+  <view class="container home">
+    <view class="topbar">
+      <view class="top_search">
+        <text class="iconfont iconsousuo"></text>
+        <text>搜索优惠商品</text>
+      </view>
+      <view class="top_notice">
+        <text class="notice_badge">5</text>
+        <text class="iconfont iconlingdang"></text>
+      </view>
+    </view>
+    <van-tabs class="vanTab" active="{{ currentTab }}" bind:change="onTabChange">
+      <van-tab wx:for="{{tab1.list}}" wx:key="index" title="{{item}}"></van-tab>
+    </van-tabs>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+      style="height:{{winHeight}}rpx; width: 100%">
+      <swiper-item wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12]}}" wx:key="index">
+        <scroll-view scroll-y="true" class="scoll-h">
+          <swiper class="banner1" indicator-dots="{{false}}" indicator-color="#cccccc" indicator-active-color="#f60"
+            autoplay="{{true}}" interval="3000" duration="300">
+            <block wx:for="{{imgUrls}}" wx:key="index">
+              <swiper-item>
+                <image src="../assets/images/banner.jpg" class="slide-image" mode='widthFix' />
+              </swiper-item>
+            </block>
+          </swiper>
+          <view class="sort stickyView">
+            <button class="s1 {{checkTabOrder == item+'-1'?'active':''}}" size="mini" bindtap="goToTest" plain>综合</button>
+            <button class="s2 {{checkTabOrder == item+'-2'?'active':''}}" size="mini" plain>佣金</button>
+            <button class="s3 {{checkTabOrder == item+'-3'?'active':''}}" size="mini" plain>销量</button>
+            <button class="s4 {{checkTabOrder == item+'-4'?'active':''}}" size="mini" plain><text class="txt">价格</text>
+              <block wx:if="{{checkTabOrder == item+'-4'}}">
+                <text wx:if="{{!priceTag}}" class="iconfont icon-xiangxia1"></text><text wx:else
+                  class="iconfont icon-xiangshang1"></text>
+              </block>
+            </button>
+          </view>
+          <view class="mlist1">
+            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+            <view class="bottomspace"></view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+    <van-dialog id="van-dialog" />
+  </view>
+</template>
+<script>
+  import { createPage } from '@mpxjs/core';
+  import {wxNavigate} from '../utils/WxApiUtils'
+  import {checkEmail} from '../utils/Validate'
+  createPage({
+    data: {
+      types: [],
+      tab1: {
+        list: ['推荐', '美食', '母婴', '水果', '服饰', '百货', '美妆', '电器', '男装', '家纺', '鞋包', '运动', '手机'],
+        scroll: true,
+        height: 44,
+        fixed: true,
+      },
+      currentTab: 0,
+      winHeight: "", //窗口高度
+      categoryTop: 0,
+      navagarorFloat: false,
+      checkTabOrder: 1,
+      priceTag: false,
+      imgUrls: [
+        '../assets/images/banner.jpg',
+        '../assets/images/banner.jpg',
+        '../assets/images/banner.jpg'
+      ],
+      params: {
+        optId: null,
+        page: {
+          page: 1,
+          pageSize: 8
+        },
+        sort: {
+          order: null,
+          sort: null
+        }
+      },
+      loading: false,
+      isEnd: false,
+      noMoreData: false,
+      isHideLoadMore: true,
+      scrollTop: 0
+    },
+    onShow() {
+      // 所在页面显示之后就会执行一次
+      console.log('page show')
+      // 自定义tabbar时需要处理选中状态
+      if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({selected: 0 })
+      }
+      //  高度自适应
+      var that = this;
+      wx.getSystemInfo({
+        success: function (res) {
+          var clientHeight = res.windowHeight,
+            clientWidth = res.windowWidth,
+            rpxR = 750 / clientWidth;
+          var calc = clientHeight * rpxR - 90;
+          that.winHeight = calc;
+        }
+      });
+    },
+    onHide() {
+      // 页面切入后台执行
+      console.log('page hide')
+
+    },
+    methods: {
+      async goToTest() {
+        // let resp = await WxApiUtils.wxGetLocation();
+        // console.log('[resp]',resp);
+        let resp = checkEmail('1tuhe3223@163.com');
+        console.log('[resp]',resp);
+        wxNavigate('/pages/test')
+      },
+      showDetail (e) {
+        console.log('[showDetail parent]',e.detail);
+        
+      },
+      /**
+       * 页面相关事件处理函数--监听用户下拉动作
+       */
+      onPullDownRefresh() {},
+      /**
+       * 页面上拉触底事件的处理函数
+       */
+      onReachBottom() {},
+      /**
+       * 用户点击右上角分享
+       */
+      onShareAppMessage() {},
+    }
+  })
+
+</script>
+<style lang='scss'>
+  .container {}
+
+  .home {}
+
+  .home .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 90rpx;
+    color: #fff;
+    background: #fff;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1000;
+  }
+
+  .topbar .top_search {
+    flex: 1;
+    margin: 0 15rpx 0 30rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    overflow: hidden;
+    background: #f6f6f6;
+    border-radius: 100rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #999;
+  }
+
+  .topbar .top_notice {
+    flex: 0.1;
+    margin: 0rpx 30rpx 0 0;
+    color: #666;
+    position: relative;
+
+    .notice_badge {
+      display: block;
+      width: 30rpx;
+      height: 30rpx;
+      line-height: 30rpx;
+      text-align: center;
+      overflow: hidden;
+      background: #f30;
+      border-radius: 100%;
+      font-size: 24rpx;
+      color: #fff;
+      position: absolute;
+      right: -10rpx;
+      top: -10rpx;
+    }
+
+    .iconfont {
+      font-size: 50rpx;
+    }
+  }
+
+
+  .home .vanTab {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 90rpx;
+    z-index: 1000;
+
+  }
+
+  .home .vanTab .van-tabs {}
+
+  .home .vanTab .van-tabs .van-tabs__nav {
+    background: #fff;
+  }
+
+  .home .vanTab .van-tab {
+    height: 90rpx;
+    font-size: 32rpx;
+    line-height: 75rpx;
+    color: #666;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    -webkit-flex: 0 0 16.5%;
+    flex: 0 0 16.5%;
+    border-bottom: 1rpx #eeeeee solid;
+  }
+
+  .home .vanTab .van-tab--active {
+    color: #f30;
+  }
+
+  .tab-content {
+    padding-top: 180rpx;
+  }
+
+  .banner {
+    padding: 30rpx 30rpx 20rpx 30rpx;
+    height: 270rpx;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .banner image {
+    width: 100%;
+    display: block;
+    border-radius: 10rpx;
+  }
+
+  .banner1 {
+    padding: 30rpx 30rpx 0rpx 30rpx;
+    height: 210rpx;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .banner1 image {
+    width: 100%;
+    display: block;
+    border-radius: 10rpx;
+  }
+
+  .menu {
+    padding: 10rpx 30rpx 10rpx 30rpx;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    margin-top: -30rpx;
+  }
+
+  .menu image {
+    display: block;
+  }
+
+  .menu .m1 {
+    width: 245rpx;
+    float: left;
+  }
+
+  .menu .m2 {
+    width: 430rpx;
+    float: right;
+    margin-bottom: 15rpx;
+  }
+
+  .menu .m3 {
+    width: 210rpx;
+    float: right;
+  }
+
+  .menu .m4 {
+    width: 210rpx;
+    float: right;
+    margin-left: 13rpx;
+  }
+
+  .topspace {
+    height: 70rpx;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+  }
+
+  .bottomspace {
+    height: 80rpx;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+  }
+
+  .stickyView {
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 1000;
+    top: -1px;
+  }
+
+  .sort{width: 100%; padding: 0 10rpx; background: #fff; height: 80rpx; line-height: 80rpx; display: flex; border-bottom:2rpx #eeeeee solid;}
+  .sort button{width: 23%; height: 80rpx; line-height: 80rpx; overflow: hidden; border: 0; color: #999; font-size: 30rpx; position: relative;}
+  .sort button.active{color: #f30;}
+  .sort .s4{display: flex; padding: 0; justify-content: center;}
+  .sort .s4 .txt{}
+  .sort .s4 .iconfont{color: #ccc; font-size:16rpx; margin-left:10rpx;}
+  .sort .s4.active .iconfont{color: #f30;}
+  .sort.fixed{position: fixed; top: 0rpx; z-index: 100;}
+
+</style>
+<script type='application/json' lang='json'>
+  {
+    "navigationBarTitleText": "首页",
+    "usingComponents": {
+      "van-search": "vant-weapp/dist/search/index",
+      "van-tab": "vant-weapp/dist/tab/index",
+      "van-tabs": "vant-weapp/dist/tabs/index",
+      "van-toast": "vant-weapp/dist/toast/index",
+      "van-dialog": "vant-weapp/dist/dialog/index",
+      "list-item": "../components/listItem"
+    }
+  }
+
+</script>

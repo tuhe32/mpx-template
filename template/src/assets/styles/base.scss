@@ -1,0 +1,139 @@
+view {
+  box-sizing: border-box;
+}
+page {
+  height: 100%;
+  background: #f2f2f2;
+  font-family:-apple-system-font,Helvetica Neue,sans-serif;
+}
+.container {
+  height: 100%;
+  /*display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;*/
+  background: #f6f6f6;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+.clearfix{clear: both;}
+.fl{float: left;}
+.fr{float: right;}
+
+input.input_placeholder{color: #eee;}
+
+scroll-view {-webkit-transform: translateZ(0);-webkit-overflow-scrolling: touch;}
+
+.scoll-h{height: 100%; z-index: 10; }
+   ::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+    }
+
+.footbar{width: 101%; height: 100rpx; overflow: hidden; position:fixed; left: 0; bottom:0rpx; z-index:10; background:#fff; box-shadow: 0rpx -2rpx 2rpx #dddddd;  display: flex; flex-direction: row; flex-wrap: nowrap; }
+.footbar button{height: 100rpx; line-height: 100rpx; text-align: center; padding: 0; border: 0; border-radius: 0;}
+.footbar  button.btn0_hover{background: #eee;}
+.footbar .fbtn0{width: 20%; height:100rpx; line-height:40rpx; background: #fff; text-align: center;  overflow: hidden; position: relative; border-top:0rpx #eeeeee solid; border-left:2rpx #eeeeee solid; margin-left: -2rpx; }
+.footbar .fbtn0 text{font-size: 30rpx; display: block; color: #666; margin:8rpx auto 0 auto;}
+.footbar .fbtn0 .iconfont{display: block; font-size: 45rpx; line-height:45rpx; margin:8rpx auto 0 auto; border: 0;}
+.footbar .fbtn0 text.orange{color: #f60;}
+.footbar .fbtn1{width:40%; border-radius:0; border: 0; margin: 0; font-size: 35rpx; }
+.footbar .fbtn1 .iconfont{font-size: 40rpx; margin-right: 10rpx;}
+.footbar .fbtn2{width:25%; border-radius:0; border: 0; margin: 0; font-size: 35rpx; }
+.footbar .fbtn2 .iconfont{font-size: 40rpx; margin-right: 10rpx;}
+.footbar .fbtn100{width:100%; border-radius:0; border: 0; margin: 0; font-size: 35rpx; }
+
+//uploadBox
+.uploadBox{}
+.uploadBox .upload_btn{width:200rpx; height:200rpx; float: left; text-align: center; background: #f3f3f3; border:0rpx #cccccc dotted; margin:0 16rpx 16rpx 0; }
+.uploadBox .upload_btn .iconfont{font-size:80rpx; line-height:160rpx; display: block; margin:20rpx auto 0 auto; color: #999;}
+.uploadBox .upload_img{width:200rpx; height:200rpx; float: left; margin:0 16rpx 16rpx 0; position: relative;}
+.uploadBox .upload_img text{width: 40rpx; height: 40rpx; line-height: 40rpx; text-align: center; position: absolute; right:-10rpx; top:-10rpx; display: block; font-size:25rpx; border-radius: 100%; background: #f90; color: #fff; z-index: 10;}
+.uploadBox .upload_img image{width:100%;height:200rpx;}
+
+
+/*滚动区域*/
+  
+//button
+button.btn_red{background: #f30; color: #fff; border: 0;}
+button.btn_bred{border:1px #ac1f28 solid; color: #ac1f28;}
+button.btn_blue{background: #1b1e3d; color: #fff; border: 0;}
+button.btn_bblue{border:1px #1b1e3d solid; color: #1b1e3d;}
+button.btn_orange{background: #f60; color: #fff; border: 0;}
+button.btn_orange_hover{background: #f40;}
+button.btn_yellow{background: #f90; color: #fff; border: 0;}
+button.btn_borange{border:1px #f60 solid; color: #f60;}
+button.btn_gray{background: #eee; color: #303030; border: 0;}
+button.btn_gray_hover{background: #999; color: #303030;}
+button.btn_bgray{border:1px #999999 solid; color: #303030;}
+button.btn_black{background: #303030; color: #fff;}
+button.btn_pink{background: #ff5f5f; color: #fff; border: 0;}
+
+//color
+.gray{color: #999;}
+.red{color: #f00;}
+.blue{color:dodgerblue;}
+.orange{color: #f60;}
+
+//box_shadow
+.box_shadow{border-radius: 10rpx; box-shadow: 2rpx 2rpx 5rpx #eeeeee;}
+
+.countdown{display: inline-block;}
+
+
+checkbox-group{width: 100%;}
+/*  重写 checkbox 样式  */
+/* 未选中的 背景样式 */
+checkbox .wx-checkbox-input{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx; /* 背景的宽 */
+   height: 40rpx; /* 背景的高 */
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+    border-color: #ff5f5f;
+   background: #ff5f5f;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+
+/*  重写 radio 样式  */
+/* 未选中的 背景样式 */
+radio .wx-radio-input{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;
+   height: 40rpx;
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked{
+   background:#ff5f5f;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+
+.mlist1{padding: 20rpx 0; height: auto; overflow: hidden; background: #fff; display: flex; flex-wrap: wrap; justify-content: space-between;}  
+.mlist1 list-item{width: 100%;}

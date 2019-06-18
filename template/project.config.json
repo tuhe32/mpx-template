@@ -1,0 +1,19 @@
+{
+	"compileType": "miniprogram",
+	"setting": {
+		"newFeature": true,
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"autoAudits": false
+	},
+	"appid": "{{ appid }}",
+	"projectname": "{{ name }}",
+	"description": "{{ description }}",
+	"libVersion": "2.7.1",
+	"miniprogramRoot": "dist/",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {}
+}

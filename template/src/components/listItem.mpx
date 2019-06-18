@@ -1,0 +1,81 @@
+<template minapp='native' xlang='wxml'>
+  <view class="listbox1" bindtap="showDetail">
+    <view class="avatar">
+      <image class="tag" src="../assets/images/pdd.png" mode='widthFix'/>
+      <image class="img" src="../assets/images/p1.jpg" mode='widthFix'/>
+    </view>
+    <view class="box">
+      <view class="tit">
+        <wxc-elip line="2">时尚运动套{{todo.height}} -- {{index}}</wxc-elip>
+      </view>
+      <view class="info">
+        <view class="sales">销量 53件</view>
+        <view class="commission">赚<text class="small">￥</text><text>4.33</text></view>
+      </view>
+      <view class="bt">
+        <view class="coupon">
+          <view class="txt"><text>20</text> 元券</view>
+          <image class="img" src="../assets/images/quan.png" mode='widthFix'/>
+        </view>
+        <view class="price">
+          <view class="txt"> 券后</view>
+          <view class="cprice">￥<text>25.80</text></view>
+        </view>
+      </view>
+      <view class="bt1">
+        <view class="post">包邮</view><text class="oprice">￥30.00</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+  createComponent({
+    properties: {
+      todo: Object,
+      index: Number
+    },
+    data: {
+    },
+    methods: {
+      showDetail () {
+        this.triggerEvent('showDetail', {value: 'child component'})
+      }
+    }
+  })
+</script>
+<style lang='scss'>
+
+ .container {} 
+ .listbox1{width: 100%; height: auto; overflow: hidden; display: flex; flex-wrap:nowrap; padding:20rpx 30rpx;}
+  .listbox1 .avatar{position: relative;}
+  .listbox1 .avatar image.img{display: block; width:300rpx; border-radius:8rpx;}
+  .listbox1 .avatar image.tag{display: block; width:80rpx; position: absolute; left: 0; top: 0;}
+  .listbox1 .box{width: 100%; padding-left: 20rpx; text-align: left;}
+  .listbox1 .box .tit{height: 78rpx; overflow: hidden; line-height:1.2; font-size: 30rpx; color: #464646; font-weight:500;}
+  .listbox1 .box .info{height: auto; overflow: hidden; padding:18rpx 0 18rpx 0;}
+  .listbox1 .box .commission{font-size:30rpx; color: #fff; border-radius:30rpx; float: left; background: #f00; height:50rpx; line-height:50rpx; padding:0 20rpx;}
+  .listbox1 .box .commission text{font-size: 32rpx; color: #ff0; font-weight: bold;}
+  .listbox1 .box .commission .small{font-size: 22rpx; color: #fff; font-weight: normal;}
+  .listbox1 .box .sales{font-size: 28rpx; color: #999; margin-top:10rpx; float:right;}
+   .listbox1 .box .bt{ display: block; height: auto; overflow: hidden; margin: 10rpx 0 15rpx 0; }
+  .listbox1 .box .price{ height:52rpx; line-height:52rpx; overflow: hidden; border:2rpx #f00 solid; float: left; display: flex; border-radius: 10rpx;}
+  .listbox1 .box .price .txt{background: #f00; color: #fff;font-size: 26rpx; padding: 0 4rpx;}
+  .listbox1 .box .price .cprice{font-size: 20rpx; color: #f00; margin: 0 10rpx; line-height:48rpx;}
+  .listbox1 .box .price .cprice text{font-size: 34rpx;font-weight: bold;}
+  .listbox1 .box .coupon{width:120rpx; height:60rpx; font-size: 24rpx; float:right; color: #fff; display: block; position: relative;}
+  .listbox1 .box .coupon image{width: 100%; display: block;}
+  .listbox1 .box .coupon .txt{position: absolute; width: 100%; height: 60rpx; line-height: 50rpx; text-align: center;}
+  .listbox1 .box .coupon .txt text{color: #ff0; font-size:32rpx; font-weight: bold;}
+  .listbox1 .box .bt1 .post{float: left; padding:4rpx 10rpx; font-size: 24rpx; color: #fff; background: #ff615e; border-radius:6rpx; margin-right: 10rpx;}
+  .listbox1 .box .bt1 .oprice{font-size:26rpx; color: #ccc; text-decoration: line-through; display: block; }
+  .listbox1 .box .bt1 .num{color: #999; font-size: 26rpx;}
+  .listbox1 .box .bt1 .num text{color: #f60; font-size: 32rpx;}
+</style>
+<script  type='application/json' lang='json'>
+{ 
+ "component": true
+}
+</script>
+
