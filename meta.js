@@ -64,7 +64,7 @@ module.exports={
     },
     
     skipInterpolation: [
-      "**/*.mpx","**/*.wxml"
+      "**/*.mpx","**/*.wxml","**/*.js"
     ],
 
     complete: function (data,{chalk}) {
