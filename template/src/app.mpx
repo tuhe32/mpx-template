@@ -6,8 +6,6 @@
     computed: {
     },
     methods: {
-      asd(){console.log();
-      }
     },
     onShow(options) {
       console.log(options)
