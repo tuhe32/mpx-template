@@ -8,6 +8,8 @@
 <script>
 import { createPage } from '@mpxjs/core'
 import Tips from '../utils/Tips'
+import { wxNavigate } from "../utils/WxApiUtils";
+import setPath from '../packages/user/set.mpx?resolve'
   createPage({
     data: {
     },
@@ -23,7 +25,9 @@ import Tips from '../utils/Tips'
     },
     methods: {
       showToast() {
-        Tips.success('成功文案啊成功文案啊成功文案啊');
+        console.log('[testPagePath]',setPath);
+        wxNavigate(setPath)
+        // Tips.success('成功文案啊成功文案啊成功文案啊');
       },
     /**
      * 页面相关事件处理函数--监听用户下拉动作

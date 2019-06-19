@@ -25,24 +25,26 @@
               </swiper-item>
             </block>
           </swiper>
-          <view class="sort stickyView">
-            <button class="s1 {{checkTabOrder == item+'-1'?'active':''}}" size="mini" bindtap="goToTest" plain>综合</button>
-            <button class="s2 {{checkTabOrder == item+'-2'?'active':''}}" size="mini" plain>佣金</button>
-            <button class="s3 {{checkTabOrder == item+'-3'?'active':''}}" size="mini" plain>销量</button>
-            <button class="s4 {{checkTabOrder == item+'-4'?'active':''}}" size="mini" plain><text class="txt">价格</text>
-              <block wx:if="{{checkTabOrder == item+'-4'}}">
-                <text wx:if="{{!priceTag}}" class="iconfont icon-xiangxia1"></text><text wx:else
-                  class="iconfont icon-xiangshang1"></text>
-              </block>
-            </button>
-          </view>
-          <view class="mlist1">
-            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
-            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
-            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
-            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
-            <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
-            <view class="bottomspace"></view>
+          <view>
+            <view class="sort stickyView">
+              <button class="s1 {{checkTabOrder == item+'-1'?'active':''}}" size="mini" bindtap="goToTest" plain>综合</button>
+              <button class="s2 {{checkTabOrder == item+'-2'?'active':''}}" size="mini" plain>佣金</button>
+              <button class="s3 {{checkTabOrder == item+'-3'?'active':''}}" size="mini" plain>销量</button>
+              <button class="s4 {{checkTabOrder == item+'-4'?'active':''}}" size="mini" plain><text class="txt">价格</text>
+                <block wx:if="{{checkTabOrder == item+'-4'}}">
+                  <text wx:if="{{!priceTag}}" class="iconfont icon-xiangxia1"></text><text wx:else
+                    class="iconfont icon-xiangshang1"></text>
+                </block>
+              </button>
+            </view>
+            <view class="mlist1">
+              <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+              <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+              <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+              <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+              <list-item todo="{{tab1}}" index="{{index}}" bind:showDetail="showDetail"></list-item>
+              <view class="bottomspace"></view>
+            </view>
           </view>
         </scroll-view>
       </swiper-item>

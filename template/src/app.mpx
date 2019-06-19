@@ -31,6 +31,12 @@
     "packages": [
       "./packages/index?root=child"
     ],
+    "preloadRule": {
+      "pages/index": {
+        "network": "all",
+        "packages": ["child"]
+      }
+    },
     "window": {
       "backgroundTextStyle": "light",
       "navigationBarBackgroundColor": "#fff",

@@ -17,7 +17,7 @@ service.interceptors.request.use(config => {
   if (!config.method) config.method = 'POST'      // 默认请求方式为POST 方式
   // 也可以返回promise
   return config
-},err => {
+},error => {
   console.log(error) // for debug
   return Promise.reject(error)
 })

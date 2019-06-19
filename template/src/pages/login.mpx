@@ -50,7 +50,7 @@
           // let result = await auth.login();
           if (!result){
             Tips.error('授权失败');
-            this.loading = false;
+            // this.loading = false;
             return;
           }
           Tips.loaded()
