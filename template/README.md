@@ -1,6 +1,6 @@
 ## 注意事项
 
-### 1、class绑定：wx:class="{{['login_logo',{animate :isActive},{shake: isActive}]}}" 
+### 1、class绑定：wx:class="{\{['login_logo',{animate :isActive},{shake: isActive}]}\}" 
 - 多个判断class,和一个固定class 的写法，其他情况都可从中衍生
 
 ### 2、animate.css https://github.com/daneden/animate.css
