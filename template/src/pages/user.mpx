@@ -1,7 +1,9 @@
 <template minapp='native' xlang='wxml'>
   <view class='container'>
     <button bindtap="showToast">toast</button>
+    <button bindtap="showPopup">toast</button>
     <van-toast id="van-toast" />
+    <share-popup class="sharePopup"></share-popup>
   </view>
 </template>
 
@@ -29,6 +31,9 @@ import setPath from '../packages/user/set.mpx?resolve'
         wxNavigate(setPath)
         // Tips.success('成功文案啊成功文案啊成功文案啊');
       },
+      showPopup () {
+        this.selectComponent('.sharePopup').makeShareCanvas();
+      },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
     */
@@ -53,7 +58,8 @@ import setPath from '../packages/user/set.mpx?resolve'
 {
  "navigationBarTitleText": "用户",
  "usingComponents": {
-   "van-toast": "vant-weapp/dist/toast/index"
+   "van-toast": "vant-weapp/dist/toast/index",
+   "share-popup": "../components/sharePopup"
  }
 }
 </script>

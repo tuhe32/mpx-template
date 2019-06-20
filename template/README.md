@@ -22,9 +22,10 @@
 
 ### 5、组件的使用
 - （1）、组件的注册以及使用和原生一样
-- （2）、组件的传参：父组件传参：todo="{{tab1}}" index="{{index}}" 
+- （2）、组件的传参：父组件传参：todo="{\{tab1}\}" index="{\{index}\}" 
 - （3）、子组件事件通信：bind:showDetail="showDetail"  ==> bind:事件名="调用的父组件方法" 
 - （4）、子组件：this.triggerEvent('showDetail', {value: 'child component'}) 触发事件
+- （5）、父组件调用子组件的方法，this.selectComponent('.sharePopup').makeShareCanvas(); 加个类选择器后，直接调用即可
 
 ### 6、json中不允许出现单引号'',注释，最后一个键值对不能有逗号（,） !!!
 
